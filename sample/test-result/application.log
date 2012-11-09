@@ -1,0 +1,5 @@
+07 Nov 2012 09:02:06,284 INFO  ~ Starting C:\Users\SriBalaKumar\Documents\play projects\sample
+07 Nov 2012 09:02:08,019 WARN  ~ You're running Play! in DEV mode
+07 Nov 2012 09:02:08,256 INFO  ~ Listening for HTTP on port 9000 (Waiting a first request to start) ...
+07 Nov 2012 09:02:24,327 INFO  ~ Connected to jdbc:h2:mem:play;MODE=MYSQL;LOCK_MODE=0
+07 Nov 2012 09:02:24,359 INFO  ~ Application 'sample' is now started !
