@@ -1,0 +1,17 @@
+<html>
+<body>
+socket example: 
+<div id="socketout"></div>
+
+<script type="text/javascript">
+    // Create a socket
+    var socket = new WebSocket('@@{Application.WebSocket.listen}')
+
+    // Message received on the socket
+    socket.onmessage = function(event) {
+        $('#socketout').append(event.data+"<br />");
+
+    }
+</script>
+</body>
+</html>

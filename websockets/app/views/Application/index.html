@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>WebSocket test</title>
+<style>
+.message {background: lightgray;}
+</style>
+<script>
+var ws=null;
+window.onload = function() {
+    document.getElementById('sendbutton')
+        .addEventListener('click', sendMessage, false);
+    document.getElementById('connectbutton')
+        .addEventListener('click', connect, false);
+    document.getElementById('disconnectbutton')
+        .addEventListener('click', disconnect, false);
+}
+
+function writeStatus(message) {
+    var html = document.createElement("div");
+    
+    html.setAttribute('class', 'message');
+    html.innerHTML = message;
+    document.getElementById("status").appendChild(html);
+}
+
+function connect() {
+    
+  ws = new WebSocket("ws://localhost:9000/ws?name=TestUser");
+    
+
+    ws.onopen = function(evt) { 
+        writeStatus("connected");
+    }
+
+    ws.onclose = function(evt) {
+        writeStatus("disconnected");
+    }
+
+    ws.onmessage = function(evt) {
+        writeStatus("response: " + evt.data);
+    }
+
+    ws.onerror = function(evt) {
+        writeStatus("error: " + evt.data);
+    }
+}
+
+function disconnect() {
+    ws.close();
+}
+
+function sendMessage() {
+    ws.send(document.getElementById('messagefield').value);
+}
+</script>
+</head>
+<body>
+<h1>WebSocket test</h1>
+<button id="connectbutton">Connect</button>
+<button id="disconnectbutton">Disconnect</button><br>
+<input type="text" id="messagefield"/><button id="sendbutton">Send</button>
+<div id="status"></div>
+</body>
+</html>
